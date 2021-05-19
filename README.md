@@ -2,8 +2,7 @@
 
 ## 1. What components make up this application?
 
-**Login.js** returns the HTML required to render the form.
-* 1 click event on the login button
+* **Login.js** returns the HTML required to render the form.
 
 **Post.js** returns the HTML required to render a post. 
 
@@ -31,19 +30,58 @@
 
 ## 2. What state is being tracked in the application?
 
-* The application is tracking the permanent state of the application and the API, which includes the user name, email and password, messages between users, gif entry including a giff title, URL, story behind the gif and the date of post, and users favorite gifs.
+* The User
+  - name
+  - email
+  - password
+
+* The Message
+  - userId
+  - text
+  - recipientId
+  - read
+
+* The Post
+  - userId
+  - title
+  - timestamp
+  - description
+  - imageURL
+
+* The Likes
+  - postId
+  - userId
+
 
 ## 3. What state is persistent? Reverse engineer the data and their relationships and build an ERD.
 
+* The User, Message, Post, and Likes are persistent.
+
+* Check out our [ERD](https://dbdiagram.io/d/60a2bc2ab29a09603d154226).
+
 ## 4. What state is transient? Is there any state being tracked, but not permanently in the API?
+
+* The "Posts Since Year" dropdown in the Footer
+* The "Posts By User" dropdown in the Footer
+* The "Show Only Favorites" checkbox in the Footer
+</br>
+* The PostEntry.js input fields
+* The MessageForm.js input fields
 
 ## 5. What event listeners are used in this application? Which components have event listeners?
 
-* The app has a number of event listeners. The login form, message form, post entry module, delete post module and favorite post module all have a click event. The recipient choice in the message form uses a change event for the dropdown menu. There is a change event in the footer for the users and the favorites checkbox.
+* 12 "Click" Events
+  - Login.js - Login Button
+  - NavBar.js - Home, New DM, DMs, LogOut
+  - PostEntry.js - MiniMode, Submit, Cancel
+  - MessageForm.js - Submit, Cancel
+  - Post.js - Delete, Favorite
+
+* 4 "Change" Events
+  - Footer.js - Posts Since, Posts By User, Show Only Faves
+  - MessageForm.js - Recipient
 
 ## 6. What fetch calls are used in this application to modify state? What method (GET, POST, DELETE) is used on each?
-
-There are a number of fetch calls in this app as well. The favorite post component uses a method of ‘POST’. There is a component that marks whether a message is read that uses the ‘GET’ method. The component that saves user messages as well as a component that saves a user’s posts both use the ‘POST’ method. There are fetch calls using the ‘GET’ method for user posts as well as for the users themselves. There is also an option to delete a post using the ‘DELETE’ method.
 
 * Users fetches “users”  and uses the default method: “GET”
 * Likes fetches “likes” and uses the default method: ”GET”
@@ -55,13 +93,13 @@ There are a number of fetch calls in this app as well. The favorite post compone
 * Save posts fetches “posts” and uses the method: “POST”,
 * Delete posts fetches “posts” and uses the method: “DELETE”
 
-## 7 What bugs/incomplete features still need to be fixed or implemented?
+## 7. What bugs/incomplete features still need to be fixed or implemented?
 
-- direct messages received show up as undefined and aren't saved to permanent state
-- there's no feature to follow other users
-- the ‘year since’ in the footer drop down menu doesn’t reflect on the DOM
-- the link on the “Posted by {name}” is broken and returns the user to top of page
-- default “Posts by user {drop down box}” does not appear but other users do when selected
-- no confirmation that message was saved or sent to another user
-- the star used to select favorites can be used clicked repeatedly on the same gif post, which generates multiple likes for a single post and there's not undo option to remove a favorite post from a users list.
+- Direct message text shows up as undefined and isn't saved to permanent state.
+- The follow other users feature has not been implemented.
+- The 'Posts since’ drop down menu doesn’t reflect the posts visible in the Posts List.
+- The link on the “Posted by {name}” is broken and returns the user to top of page.
+- “Posts by user {Ray Medrano}” appears to be the default Post List until another User is selected.
+- No confirmation that message was saved or sent to another user.
+- The star used to select favorites cannot be toggled on or off. It only can bbe toggled on and clicking continues to add that post to the favorites list.
 
