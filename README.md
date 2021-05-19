@@ -60,7 +60,6 @@
 * The "Posts Since Year" dropdown in the Footer
 * The "Posts By User" dropdown in the Footer
 * The "Show Only Favorites" checkbox in the Footer
-</br>
 * The PostEntry.js input fields
 * The MessageForm.js input fields
 
